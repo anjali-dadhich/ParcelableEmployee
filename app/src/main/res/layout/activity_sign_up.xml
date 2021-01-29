@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreenAqua"
+    tools:context=".activity.SignUpActivity">
+
+
+    <TextView
+        android:id="@+id/txtSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/sign_up"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_weight="1" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSignUp"
+        app:layout_constraintVertical_weight="5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corner_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="44dp">
+
+            <TextView
+                android:id="@+id/txtWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/welcome"
+                android:textColor="@color/colorGreenAqua"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/txtStatement"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/txtStatement"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/txtStatement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/statement"
+                android:textColor="@color/colorGreenAqua"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/txtEmployeeCode"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.106"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
+
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:text="@string/name"
+                android:textColor="@color/colorBlackMatte"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTxtUserName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/editTxtEmployeeCode"
+                app:layout_constraintTop_toBottomOf="@+id/editTxtEmployeeCode" />
+
+            <EditText
+                android:id="@+id/editTxtUserName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="9dp"
+                android:autofillHints="@string/name"
+                android:background="@drawable/edit_text_background"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtEmailId"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/txtUserName"
+                app:layout_constraintTop_toBottomOf="@+id/txtUserName"
+                tools:ignore="LabelFor"
+
+                android:nextFocusForward="@+id/editTxtEmailId"/>
+
+            <TextView
+                android:id="@+id/txtEmailId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="296dp"
+                android:layout_marginBottom="9dp"
+                android:text="@string/email_id"
+                android:textColor="@color/colorBlackMatte"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTxtEmailId"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/editTxtUserName"
+                app:layout_constraintTop_toBottomOf="@+id/editTxtUserName" />
+
+            <EditText
+                android:id="@+id/editTxtEmailId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="9dp"
+                android:autofillHints="@string/email_id"
+                android:background="@drawable/edit_text_background"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtMobileNo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/txtEmailId"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmailId"
+                tools:ignore="LabelFor"
+                android:nextFocusForward="@+id/editTxtMobileNo"/>
+
+            <TextView
+                android:id="@+id/txtMobileNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="284dp"
+                android:layout_marginBottom="9dp"
+                android:text="@string/mobile_no"
+                android:textColor="@color/colorBlackMatte"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTxtMobileNo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/editTxtEmailId"
+                app:layout_constraintTop_toBottomOf="@+id/editTxtEmailId" />
+
+            <EditText
+                android:id="@+id/editTxtMobileNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="10dp"
+                android:autofillHints="@string/mobile_no"
+                android:background="@drawable/edit_text_background"
+                android:ems="10"
+                android:inputType="phone"
+                android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/txtMobileNo"
+                app:layout_constraintTop_toBottomOf="@+id/txtMobileNo"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/txtEmployeeCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="260dp"
+                android:layout_marginBottom="9dp"
+                android:text="@string/employee_code"
+                android:textColor="@color/colorBlackMatte"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTxtEmployeeCode"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/txtStatement"
+                app:layout_constraintTop_toBottomOf="@+id/txtStatement"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/editTxtEmployeeCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="9dp"
+                android:autofillHints="@string/employee_code"
+                android:background="@drawable/edit_text_background"
+                android:ems="10"
+                android:inputType="phone"
+                android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtUserName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/txtEmployeeCode"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmployeeCode"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="LabelFor"
+                android:nextFocusForward="@+id/editTxtUserName"/>
+
+            <Button
+                android:id="@+id/buttonSignUp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/sign_up"
+                android:textColor="@color/colorWhite"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTxtMobileNo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

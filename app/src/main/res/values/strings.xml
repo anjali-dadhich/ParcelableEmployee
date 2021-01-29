@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ParcelableExample</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="statement">Please sign up to continue...</string>
+    <string name="name">Name</string>
+    <string name="welcome">Welcome!</string>
+    <string name="email_id">Email Id</string>
+    <string name="mobile_no">Mobile No.</string>
+    <string name="employee_code">Employee Code</string>
+    <string name="icon">Icon</string>
+</resources>
