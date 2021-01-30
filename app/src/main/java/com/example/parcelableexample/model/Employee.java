@@ -11,12 +11,30 @@ package com.example.parcelableexample.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+/*class annotated with the @Entity annotation is mapped to a table in database.
+* •Fields in entity class can be annotated with @ColumnInfo(name = “name_of_column”)
+*  annotation to give specific column names*/
+@Entity
 public class Employee implements Parcelable {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "code")
     private int employeeCode;
+
+    @ColumnInfo(name = "contactNo")
     private long mobileNo;
+
+    @ColumnInfo(name = "name")
     private String employeeName;
+
+    @ColumnInfo(name = "emailId")
     private String emailId;
-    private Boolean employeeRegistered;
+
 
 
     //Reading Method
@@ -27,7 +45,6 @@ public class Employee implements Parcelable {
         mobileNo = in.readLong();
         employeeName = in.readString();
         emailId = in.readString();
-        employeeRegistered = (Boolean) in.readValue(getClass().getClassLoader());
     }
 
     //Creator Method
@@ -57,10 +74,17 @@ public class Employee implements Parcelable {
         parcel.writeLong(mobileNo);
         parcel.writeString(employeeName);
         parcel.writeString(emailId);
-        parcel.writeValue(employeeRegistered);
     }
 
-    //Getter
+    //Getter and setter
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public int getEmployeeCode() {
         return employeeCode;
     }
@@ -75,10 +99,6 @@ public class Employee implements Parcelable {
 
     public String getEmailId() {
         return emailId;
-    }
-
-    public Boolean getEmployeeRegistered() {
-        return employeeRegistered;
     }
 
 

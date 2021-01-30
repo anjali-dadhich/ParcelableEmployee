@@ -21,18 +21,12 @@ h
 8app/src/main/res/drawable-v24/ic_launcher_foreground.xml,0\7\078508c831007ccb3938b355f0d30a8368f99a8d
 u
 Eapp/src/main/res/layout/activity_employee_detail_display_recycler.xml,6\7\67e26cfe3180149de705b5b5ba93ba34ff2a64b9
-\
-,app/src/main/res/layout/activity_sign_up.xml,b\3\b32acfa5b25626d9cecbf5439a9ef6b8a5e6aa51
-f
-6app/src/main/res/layout/recycler_employee_list_raw.xml,3\b\3beec4ba844036695fdfbac0188ec359ad31b19d
 b
 2app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml,8\e\8e27ba16c655f421171956147d0fde89b7d25d17
 h
 8app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml,6\e\6ec7d34b130497a10dc92abcde9b313d370a89df
 R
 "app/src/main/res/values/colors.xml,9\6\969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
-S
-#app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
 R
 "app/src/main/res/values/styles.xml,f\7\f79cc2688e29fcbc286fda14ae07b27c9e83690f
 ƒ
@@ -64,3 +58,9 @@ A
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
 ?
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
+u
+Eapp/src/main/java/com/example/parcelableexample/room/EmployeeDao.java,a\8\a80e4dd8000dabb72a00e6325c66e37830818f17
+z
+Japp/src/main/java/com/example/parcelableexample/room/EmployeeDatabase.java,0\3\03c2ca62fc335fc3ff1ae0d9562b18205d0e53d6
+x
+Happ/src/main/java/com/example/parcelableexample/room/DatabaseClient.java,2\e\2e74c95bb3a11ab241138ee272ae59f0830e69b4

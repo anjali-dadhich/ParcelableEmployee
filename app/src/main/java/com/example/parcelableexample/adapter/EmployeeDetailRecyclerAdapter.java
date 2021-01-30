@@ -21,14 +21,15 @@ import com.example.parcelableexample.R;
 import com.example.parcelableexample.model.Employee;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeDetailRecyclerAdapter extends RecyclerView.Adapter<EmployeeDetailRecyclerAdapter.ViewHolder> {
 
     //create ArrayList of employee type
-    private ArrayList<Employee> arrListEmployee;
+    private List<Employee> arrListEmployee;
 
     //Constructor of adapter class
-    public EmployeeDetailRecyclerAdapter(ArrayList<Employee> arrListEmployee) {
+    public EmployeeDetailRecyclerAdapter(List<Employee> arrListEmployee) {
         this.arrListEmployee = arrListEmployee;
     }
 

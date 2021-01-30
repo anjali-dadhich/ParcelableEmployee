@@ -12,8 +12,8 @@ package com.example.parcelableexample.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,12 +21,11 @@ import android.widget.Toast;
 
 import com.example.parcelableexample.R;
 import com.example.parcelableexample.model.Employee;
+import com.example.parcelableexample.room.DatabaseClient;
 
-import java.util.ArrayList;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private static final String TAG = "SignUpActivity";
     EditText editTxtEmployeeCode;
     EditText editTxtUserName;
     EditText editTxtEmailId;
@@ -38,13 +37,12 @@ public class SignUpActivity extends AppCompatActivity {
     private String strEmailId;
     private String strEmployeeName;
 
-    /* Create Object of ArrayList of Employee class (model) which pass to
-      EmployeeDetailDisplayActivity through parcelable*/
-    ArrayList<Employee> arrListEmployee;
-
+    /* Create Object of Employee class (model) which pass to
+       CurrentEmployeeDetailDisplayActivity through parcelable and use to save employee in database*/
+    Employee employee;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
@@ -52,32 +50,16 @@ public class SignUpActivity extends AppCompatActivity {
         init();
 
         /*OnClick of buttonSignUp call setEmployeeDetail() method
-        which set values of all employee detail in Employee class
-        and call startEmployeeDetailDisplayActivity() method*/
+        which set values of all employee detail in Employee class*/
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 setEmployeeDetail();
-
-                if (employeeCode != 0 && mobileNo != 0 && strEmailId != null && strEmployeeName != null) {
-                    startEmployeeDetailDisplayActivity();
-                } else {
-                    Toast.makeText(SignUpActivity.this, "Please Fill all Employee's Detail", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
 
-    }
-
-    /*startEmployeeDetailDisplayActivity() this method start EmployeeDetailDisplayActivity
-      and pass objectEmployee to EmployeeDetailDisplayActivity*/
-    private void startEmployeeDetailDisplayActivity() {
-        Intent iEmployeeDetailDisplayActivity = new Intent(SignUpActivity.this,
-                EmployeeDetailDisplayRecyclerActivity.class);
-        iEmployeeDetailDisplayActivity.putParcelableArrayListExtra("Employee" , arrListEmployee);
-        startActivity(iEmployeeDetailDisplayActivity);
     }
 
     /*  this init() method initialise  all xml views Ids */
@@ -94,29 +76,63 @@ public class SignUpActivity extends AppCompatActivity {
     set values in variables of employee class*/
     private void setEmployeeDetail(){
 
-        try {
-            employeeCode = Integer.parseInt(editTxtEmployeeCode.getText().toString());
-            mobileNo = Long.parseLong(editTxtMobileNo.getText().toString());
-            strEmailId = editTxtEmailId.getText().toString();
-            strEmployeeName = editTxtUserName.getText().toString();
+        /*created an AsyncTask to perform database operation*/
+         class  SaveEmployeeDetailInDatabase extends AsyncTask<Void,Void,Void>{
 
-            /*initialise object at time of adding item in arrayList to prevent add same item at time
-            of reload activity*/
-            arrListEmployee = new ArrayList<>();
+            @Override
+            protected Void doInBackground(Void... voids) {
 
-            /*add item in arrListEmployee using employee object*/
-            arrListEmployee.add(new Employee(30031,9397345330L,"Anjali", "anjali@rathi.com"));
-            arrListEmployee.add(new Employee(30032,9397343489L,"Anjali Dadhich", "anjali21@rathi.com"));
-            arrListEmployee.add(new Employee(30033,9399865423L,"Anjali Vyas", "anjali94@rathi.com"));
-            arrListEmployee.add(new Employee(30034,7845621098L,"Ankita Vyas", "ankita@rathi.com"));
-            arrListEmployee.add(new Employee(30035,6548399201L,"Anand", "anand@rathi.com"));
+                try {
+                    employeeCode = Integer.parseInt(editTxtEmployeeCode.getText().toString());
+                    mobileNo = Long.parseLong(editTxtMobileNo.getText().toString());
+                    strEmailId = editTxtEmailId.getText().toString();
+                    strEmployeeName = editTxtUserName.getText().toString();
 
-            /*add user entered detail in arrListEmployee using employee object*/
-            arrListEmployee.add(new Employee(employeeCode,mobileNo,strEmployeeName,strEmailId));
+                    /*set all user entered employee detail */
+                    employee = new Employee(employeeCode,mobileNo,strEmployeeName,strEmailId);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                    //add Employee to database
+                    //call getInstance method of DatabaseClient singleton class and pass Application Context
+                    DatabaseClient.getInstance(getApplicationContext()).getEmployeeDatabase()
+                            .employeeDao()
+                            .insert(employee);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+
+                /*call startCurrentEmployeeDetailDisplayActivity() method*/
+                if (employeeCode != 0 && mobileNo != 0 && strEmailId != null &&
+                        strEmployeeName != null) {
+                    finish();
+                    startCurrentEmployeeDetailDisplayActivity();
+                }
+                else
+                    Toast.makeText(SignUpActivity.this,
+                            "Please Fill all Employee's Detail", Toast.LENGTH_SHORT).show();
+            }
+
+            /*startCurrentEmployeeDetailDisplayActivity() this method start
+              CurrentEmployeeDetailDisplayActivity
+              and pass objectEmployee to CurrentEmployeeDetailDisplayActivity through parcelable*/
+            private void startCurrentEmployeeDetailDisplayActivity() {
+                Intent iCurrentEmployeeDetailActivity = new Intent(SignUpActivity.this,
+                        CurrentEmployeeDetailDisplayActivity.class);
+                iCurrentEmployeeDetailActivity.putExtra("Employee" , employee);
+                startActivity(iCurrentEmployeeDetailActivity);
+            }
         }
+
+        /*Created Object and execute SaveEmployeeDetailInDatabase AsycTask class*/
+        SaveEmployeeDetailInDatabase saveEmployeeDetailInDatabase = new SaveEmployeeDetailInDatabase();
+        saveEmployeeDetailInDatabase.execute();
 
     }
 

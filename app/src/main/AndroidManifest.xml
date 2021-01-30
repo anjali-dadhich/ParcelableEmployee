@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.EmployeeDetailDisplayRecyclerActivity" />
+        <activity android:name=".activity.CurrentEmployeeDetailDisplayActivity"></activity>
+        <activity android:name=".activity.AllEmployeeDetailListActivity" />
         <activity android:name=".activity.SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
