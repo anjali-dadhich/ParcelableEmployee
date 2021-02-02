@@ -3,8 +3,9 @@
  * Xml file -- activity_all_employee_detail_list
  * Version -- 1.0
  * Date -- 27/1/2021
- * Last Update -- 27/1/2021
+ * Last Update -- 2/2/2021
  * This activity start on click of all employee button in CurrentEmployeeDetailDisplayActivity
+ * In This activity data access using Room library
  */
 
 package com.example.parcelableexample.activity;

@@ -3,14 +3,17 @@
  * Xml file -- activity_sign_up
  * Version -- 1.0
  * Date -- 22/1/2021
- * Last Update -- 25/1/2021
+ * Last Update -- 2/2/2021
  * This One is Main Activity
+ * In this Activity user enter data save in local database as list using room library
+ * and pass parcelable object to CurrentEmployeeDetailDisplayActivity
  */
 
 package com.example.parcelableexample.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,14 +35,14 @@ public class SignUpActivity extends AppCompatActivity {
     EditText editTxtMobileNo;
     Button buttonSignUp;
 
-    private int employeeCode;
-    private long mobileNo;
+    private int employeeCode = 0;
+    private long mobileNo =0;
     private String strEmailId;
     private String strEmployeeName;
 
     /* Create Object of Employee class (model) which pass to
        CurrentEmployeeDetailDisplayActivity through parcelable and use to save employee in database*/
-    Employee employee;
+    private Employee employee;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -76,35 +79,45 @@ public class SignUpActivity extends AppCompatActivity {
     set values in variables of employee class*/
     private void setEmployeeDetail(){
 
+        try {
+            employeeCode = Integer.parseInt(editTxtEmployeeCode.getText().toString());
+            mobileNo = Long.parseLong(editTxtMobileNo.getText().toString());
+            strEmailId = editTxtEmailId.getText().toString();
+            strEmployeeName = editTxtUserName.getText().toString();
+
+            /*set all user entered employee detail */
+            employee = new Employee(employeeCode,mobileNo,strEmployeeName,strEmailId);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         /*created an AsyncTask to perform database operation*/
-         class  SaveEmployeeDetailInDatabase extends AsyncTask<Void,Void,Void>{
+        class SaveEmployeeDetailInDatabase extends AsyncTask<Employee,Void,Void>{
 
-            @Override
-            protected Void doInBackground(Void... voids) {
+             Context context;
 
-                try {
-                    employeeCode = Integer.parseInt(editTxtEmployeeCode.getText().toString());
-                    mobileNo = Long.parseLong(editTxtMobileNo.getText().toString());
-                    strEmailId = editTxtEmailId.getText().toString();
-                    strEmployeeName = editTxtUserName.getText().toString();
-
-                    /*set all user entered employee detail */
-                    employee = new Employee(employeeCode,mobileNo,strEmployeeName,strEmailId);
-
-                    //add Employee to database
-                    //call getInstance method of DatabaseClient singleton class and pass Application Context
-                    DatabaseClient.getInstance(getApplicationContext()).getEmployeeDatabase()
-                            .employeeDao()
-                            .insert(employee);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                return null;
+            public SaveEmployeeDetailInDatabase(Context context) {
+                this.context = context;
             }
 
             @Override
+             protected Void doInBackground(Employee... employees) {
+                 try {
+                     //add Employee to database
+                     //call getInstance method of DatabaseClient singleton class and pass Application Context
+                     DatabaseClient.getInstance(context).getEmployeeDatabase()
+                             .employeeDao()
+                             .insert(employees[0]);
+
+                 } catch (Exception e) {
+                     e.printStackTrace();
+                 }
+                 return null;
+             }
+
+             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
 
@@ -131,8 +144,8 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         /*Created Object and execute SaveEmployeeDetailInDatabase AsycTask class*/
-        SaveEmployeeDetailInDatabase saveEmployeeDetailInDatabase = new SaveEmployeeDetailInDatabase();
-        saveEmployeeDetailInDatabase.execute();
+        SaveEmployeeDetailInDatabase saveEmployeeDetailInDatabase = new SaveEmployeeDetailInDatabase(getApplicationContext());
+        saveEmployeeDetailInDatabase.execute(employee);
 
     }
 

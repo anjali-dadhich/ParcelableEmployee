@@ -1,3 +1,13 @@
+/*Created by: Anjali Dadhich
+ *Java file -- CurrentEmployeeDetailDisplayActivity
+ * Xml file -- activity_current_employee_detail_display
+ * Version -- 1.0
+ * Date -- 30/1/2021
+ * Last Update -- 2/1/2021
+ * This activity start on click of signUp button in SignUpActivity
+ * In This activity data access using Parcelable Object
+ */
+
 package com.example.parcelableexample.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
