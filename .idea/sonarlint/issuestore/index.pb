@@ -5,12 +5,8 @@ s
 Capp/src/main/java/com/example/parcelableexample/model/Employee.java,c\c\cc0bba15b77067bce8aa6828240c7b0e50beb326
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-“
-capp/src/main/java/com/example/parcelableexample/activity/EmployeeDetailDisplayRecyclerActivity.java,a\8\a88adee3334d8ce4e79d297c7c80365830e6207a
 Š
 Zapp/src/main/java/com/example/parcelableexample/adapter/EmployeeDetailRecyclerAdapter.java,b\8\b8c1b067b03f3d8c9b3fb870deb3cfdaf6700cf7
-[
-+app/src/main/res/drawable/custom_button.xml,6\3\6300b7fe58e8e3897eddea8b816d52e009059fc5
 b
 2app/src/main/res/drawable/edit_text_background.xml,c\e\ce000282c15338f4f672de74f090bf655845cc3f
 d
@@ -19,8 +15,6 @@ e
 5app/src/main/res/drawable/round_corner_background.xml,e\d\ed35facff881b38b3ab62bbaac75abc649545c3f
 h
 8app/src/main/res/drawable-v24/ic_launcher_foreground.xml,0\7\078508c831007ccb3938b355f0d30a8368f99a8d
-u
-Eapp/src/main/res/layout/activity_employee_detail_display_recycler.xml,6\7\67e26cfe3180149de705b5b5ba93ba34ff2a64b9
 b
 2app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml,8\e\8e27ba16c655f421171956147d0fde89b7d25d17
 h
@@ -64,3 +58,7 @@ z
 Japp/src/main/java/com/example/parcelableexample/room/EmployeeDatabase.java,0\3\03c2ca62fc335fc3ff1ae0d9562b18205d0e53d6
 x
 Happ/src/main/java/com/example/parcelableexample/room/DatabaseClient.java,2\e\2e74c95bb3a11ab241138ee272ae59f0830e69b4
+’
+bapp/src/main/java/com/example/parcelableexample/activity/CurrentEmployeeDetailDisplayActivity.java,3\5\3504afec731f44eb4b8ee85cccea1898865dc31c
+‹
+[app/src/main/java/com/example/parcelableexample/activity/AllEmployeeDetailListActivity.java,0\1\018e75350341022caaaef01435fbf10d9649001d

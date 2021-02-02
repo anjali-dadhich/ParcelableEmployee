@@ -56,7 +56,7 @@ public class AllEmployeeDetailListActivity extends AppCompatActivity {
     /* this init() method initialise  all xml views Ids */
     private void init() {
         recyclerViewEmployeeDetail = findViewById(R.id.recyclerViewEmployeeDetail);
-
+        floatingButtonAddEmployee = findViewById(R.id.floatingButtonAddEmployee);
     }
 
     private void startSignUpButton(){

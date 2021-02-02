@@ -111,7 +111,6 @@ public class SignUpActivity extends AppCompatActivity {
                 /*call startCurrentEmployeeDetailDisplayActivity() method*/
                 if (employeeCode != 0 && mobileNo != 0 && strEmailId != null &&
                         strEmployeeName != null) {
-                    finish();
                     startCurrentEmployeeDetailDisplayActivity();
                 }
                 else
@@ -126,6 +125,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Intent iCurrentEmployeeDetailActivity = new Intent(SignUpActivity.this,
                         CurrentEmployeeDetailDisplayActivity.class);
                 iCurrentEmployeeDetailActivity.putExtra("Employee" , employee);
+                finish();
                 startActivity(iCurrentEmployeeDetailActivity);
             }
         }
