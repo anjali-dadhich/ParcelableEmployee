@@ -28,8 +28,6 @@ import java.util.List;
 
 public class AllEmployeeDetailListActivity extends AppCompatActivity {
 
-    private static final String TAG ="EmployeeDetailDisplay" ;
-
     RecyclerView recyclerViewEmployeeDetail;
     FloatingActionButton floatingButtonAddEmployee;
     EmployeeDetailRecyclerAdapter adapter;
